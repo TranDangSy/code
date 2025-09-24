@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <title>Thông tin golfer</title>
+    <?!= include('styles'); ?>
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <div class="form-container">
+            <h1 class="form-title">Thông tin golfer tham dự giải</h1>
+            
+            <form id="customerForm">
+                <!-- Thông tin khách hàng -->
+                <div class="form-group">
+                    <label for="customerName">Họ và tên:</label>
+                    <input type="text" id="customerName" readonly placeholder="Họ và tên sẽ hiển thị sau khi chọn khách hàng">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Số điện thoại:</label>
+                    <input type="tel" id="customerPhone" readonly placeholder="Số điện thoại sẽ hiển thị sau khi chọn khách hàng">
+                </div>
+                
+                <!-- Giới tính -->
+                <div class="form-group">
+                    <label>Giới tính:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Nam" required>
+                            <span class="radio-custom"></span>
+                            Nam
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="Nữ" required>
+                            <span class="radio-custom"></span>
+                            Nữ
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Ngày sinh -->
+                <div class="form-group">
+                    <label for="birthDate">Ngày sinh:</label>
+                    <input type="date" id="birthDate" required>
+                </div>
+                
+                <!-- Mã VGA -->
+                <div class="form-group">
+                    <label for="vgaCode">Mã VGA:</label>
+                    <input type="text" id="vgaCode" placeholder="Nhập mã VGA" required>
+                    <small class="help-text">Mã VGA chỉ được đăng ký một lần. Nếu trùng sẽ cập nhật thông tin.</small>
+                </div>
+                
+                <!-- Size áo -->
+                <div class="form-group">
+                    <label>Size áo:</label>
+                    <div class="size-buttons">
+                        <button type="button" class="size-btn" data-size="S">S</button>
+                        <button type="button" class="size-btn" data-size="M">M</button>
+                        <button type="button" class="size-btn" data-size="L">L</button>
+                        <button type="button" class="size-btn" data-size="O">O</button>
+                        <button type="button" class="size-btn" data-size="XO">XO</button>
+                        <button type="button" class="size-btn" data-size="2XO<">2XO</button>
+                    </div>
+                    <div class="size-preview" id="sizePreview">
+                        <p>Chọn size để xem hình ảnh mô tả</p>
+                    </div>
+                </div>
+
+                <!-- Yêu cầu khác -->
+                <div class="form-group">
+                    <label for="otherRequests">Yêu cầu khác (nếu có):</label>
+                    <textarea id="otherRequests" placeholder="Nhập yêu cầu khác nếu có..." rows="3"></textarea>
+                </div>
+                
+                <!-- Nút gửi -->
+                <div class="form-group">
+                    <button type="submit" id="submitBtn" class="submit-btn" disabled>
+                        <span class="btn-text">Gửi thông tin</span>
+                        <div class="loading-spinner"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-animation">
+                <div class="checkmark">
+                    <div class="checkmark-circle"></div>
+                    <div class="checkmark-stem"></div>
+                    <div class="checkmark-kick"></div>
+                </div>
+            </div>
+            <h2 id="successTitle">Đăng ký thành công!</h2>
+            <p id="successMessage">Thông tin của bạn đã được ghi nhận.</p>
+            <button onclick="closeModal()" class="modal-btn">Đóng</button>
+        </div>
+    </div>
+    
+    <?!= include('script'); ?>
+</body>
+</html>
